@@ -2,8 +2,9 @@ import React from "react";
 import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 
 const Home = () => (
-  <Segment placeholder>
+  <Segment placeholder color="black" className="custom-segment">
     <Grid columns={2} relaxed="very" stackable>
+      <Divider vertical></Divider>
       <Grid.Column>
         <Form>
           <Form.Input
@@ -28,8 +29,6 @@ const Home = () => (
         <Button content="Register" icon="signup" size="big" />
       </Grid.Column>
     </Grid>
-
-    <Divider vertical>Or</Divider>
   </Segment>
 );
 
