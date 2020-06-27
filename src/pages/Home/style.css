@@ -1,4 +1,39 @@
-.ui.placeholder.segment > .custom-segment {
-  color: white;
-  background-color: black;
+.homePage {
+  display: block;
+}
+
+.noData {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.postsContainer {
+  height: 100%;
+  max-width: 80%;
+  margin: auto;
+}
+
+/* Small devices like phones */
+@media (min-width: 576px) {
+  .postsContainer {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+/* Medium devices like tablets */
+@media (min-width: 768px) {
+  .postsContainer {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+/* Large devices like PC */
+@media (min-width: 992px) {
+  .postsContainer {
+    max-width: 40%;
+    margin: auto;
+  }
 }

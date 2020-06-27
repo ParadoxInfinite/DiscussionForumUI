@@ -1,0 +1,13 @@
+.indexPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.indexPage {
+  min-height: 100vh;
+}
+
+.custom-form {
+  max-width: 300px;
+  margin: auto;
+}

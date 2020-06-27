@@ -1,35 +1,30 @@
 import React from "react";
-import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
 
-const Home = () => (
-  <Segment placeholder color="black" className="custom-segment">
-    <Grid columns={2} relaxed="very" stackable>
-      <Divider vertical></Divider>
-      <Grid.Column>
-        <Form>
-          <Form.Input
-            icon="user"
-            iconPosition="left"
-            label="Username"
-            placeholder="Username"
-          />
-          <Form.Input
-            icon="lock"
-            iconPosition="left"
-            placeholder="Password"
-            label="Password"
-            type="password"
-          />
+import "./style.css";
+import MenuBar from "../../components/General/MenuBar";
+import { FETCH_POSTS } from "../../utils/mutations";
+import Posts from "../../components/Posts/Posts";
+import { useQuery } from "@apollo/react-hooks";
+import { Dimmer, Loader } from "semantic-ui-react";
 
-          <Button content="Login" primary />
-        </Form>
-      </Grid.Column>
+const Home = () => {
+  const { loading, data } = useQuery(FETCH_POSTS);
 
-      <Grid.Column verticalAlign="middle">
-        <Button content="Register" icon="signup" size="big" />
-      </Grid.Column>
-    </Grid>
-  </Segment>
-);
+  return (
+    <div className="homePage">
+      <MenuBar />
+      <div className="postsContainer">
+        <Dimmer active={loading} inverted>
+          <Loader size="large" inverted content="Fetching Posts" />
+        </Dimmer>
+        {data && data.getPosts.length > 0 ? (
+          data.getPosts.map((post: any) => <Posts key={post.id} post={post} />)
+        ) : (
+          <h4 className="noData">No posts available.</h4>
+        )}
+      </div>
+    </div>
+  );
+};
 
 export default Home;
