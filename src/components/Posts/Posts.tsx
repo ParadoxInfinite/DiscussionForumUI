@@ -3,13 +3,14 @@ import { Card, Button, Header, Comment, Icon } from "semantic-ui-react";
 import moment from "moment";
 
 import "./style.css";
+import Comments from "../Comments/Comments";
 
 const Posts = (post: any, key: any) => {
   return (
     <Card key={key} fluid>
       <Card.Content>
         <Icon className="flag report" />
-        <Card.Header>{post.username}</Card.Header>
+        <Card.Header>{post.title}</Card.Header>
         <Card.Meta>
           <Icon className="user" />
           {post.username}
@@ -47,15 +48,7 @@ const Posts = (post: any, key: any) => {
                 Comments
               </Header>
               {post.comments.map((comment: any) => (
-                <Comment key={comment.id}>
-                  <Comment.Content>
-                    <Comment.Author as="a">{comment.username}</Comment.Author>
-                    <Comment.Metadata>
-                      <div>{moment(comment.createdAt).fromNow()}</div>
-                    </Comment.Metadata>
-                    <Comment.Text>{comment.body}</Comment.Text>
-                  </Comment.Content>
-                </Comment>
+                <Comments {...comment} />
               ))}
             </Comment.Group>
           ) : (
@@ -64,15 +57,7 @@ const Posts = (post: any, key: any) => {
                 Comments
               </Header>
               {post.comments.splice(0, 2).map((comment: any) => (
-                <Comment key={comment.id}>
-                  <Comment.Content>
-                    <Comment.Author as="a">{comment.username}</Comment.Author>
-                    <Comment.Metadata>
-                      <div>{moment(comment.createdAt).fromNow()}</div>
-                    </Comment.Metadata>
-                    <Comment.Text>{comment.body}</Comment.Text>
-                  </Comment.Content>
-                </Comment>
+                <Comments {...comment} />
               ))}
               <a href="/home">View {post.commentCount - 2} more comments.</a>
             </Comment.Group>

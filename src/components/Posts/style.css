@@ -5,3 +5,7 @@
 .report {
   float: right;
 }
+
+i.icon {
+  font-size: 0.9em;
+}

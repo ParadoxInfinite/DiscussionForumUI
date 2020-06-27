@@ -39,11 +39,12 @@ export const FETCH_POSTS = gql`
       id
       username
       createdAt
+      title
       body
       comments {
         id
-        username
         body
+        username
         createdAt
       }
       likes {
