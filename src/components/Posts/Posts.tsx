@@ -1,26 +1,24 @@
 import React from "react";
-import { Card, Button, Image, Header, Comment } from "semantic-ui-react";
+import { Card, Button, Header, Comment, Icon } from "semantic-ui-react";
 import moment from "moment";
 
 import "./style.css";
 
 const Posts = (post: any, key: any) => {
-  const postData = post.post;
   return (
     <Card key={key} fluid>
       <Card.Content>
-        <Image
-          floated="left"
-          size="mini"
-          src="https://react.semantic-ui.com/images/avatar/small/elliot.jpg"
-        />
-        <Card.Header style={{ fontSize: "1.1rem" }}>
-          {postData.username}
-        </Card.Header>
-        <Card.Meta>{moment(postData.createdAt).fromNow()}</Card.Meta>
-        <Card.Description style={{ fontSize: "1.3rem" }}>
-          {postData.body}
-        </Card.Description>
+        <Icon className="flag report" />
+        <Card.Header>{post.username}</Card.Header>
+        <Card.Meta>
+          <Icon className="user" />
+          {post.username}
+          &nbsp; {"\u007c"} &nbsp;
+          <Icon className="clock" />
+          &nbsp;
+          {moment(post.createdAt).fromNow()}
+        </Card.Meta>
+        <Card.Description>{post.body}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
@@ -29,28 +27,27 @@ const Posts = (post: any, key: any) => {
             label={{
               basic: true,
               pointing: "left",
-              content: postData.likeCount,
+              content: post.likeCount,
             }}
           />
           <Button
             icon="comments"
             label={{
               basic: true,
-              content: postData.commentCount,
+              content: post.commentCount,
             }}
           />
         </div>
       </Card.Content>
       <Card.Content extra>
-        {postData.commentCount > 0 ? (
-          postData.commentCount < 3 ? (
+        {post.commentCount > 0 ? (
+          post.commentCount < 3 ? (
             <Comment.Group>
               <Header as="h3" dividing>
                 Comments
               </Header>
-              {postData.comments.map((comment: any) => (
+              {post.comments.map((comment: any) => (
                 <Comment key={comment.id}>
-                  <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
                   <Comment.Content>
                     <Comment.Author as="a">{comment.username}</Comment.Author>
                     <Comment.Metadata>
@@ -66,9 +63,8 @@ const Posts = (post: any, key: any) => {
               <Header as="h3" dividing>
                 Comments
               </Header>
-              {postData.comments.splice(0, 2).map((comment: any) => (
+              {post.comments.splice(0, 2).map((comment: any) => (
                 <Comment key={comment.id}>
-                  <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/matt.jpg" />
                   <Comment.Content>
                     <Comment.Author as="a">{comment.username}</Comment.Author>
                     <Comment.Metadata>
@@ -78,9 +74,7 @@ const Posts = (post: any, key: any) => {
                   </Comment.Content>
                 </Comment>
               ))}
-              <a href="/home">
-                View {postData.commentCount - 2} more comments.
-              </a>
+              <a href="/home">View {post.commentCount - 2} more comments.</a>
             </Comment.Group>
           )
         ) : (

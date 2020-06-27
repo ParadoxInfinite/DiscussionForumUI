@@ -1,3 +1,7 @@
 .ui.labeled.button:not(.icon) {
   padding: 0 10px !important;
 }
+
+.report {
+  float: right;
+}

@@ -18,7 +18,7 @@ const Home = () => {
           <Loader size="large" inverted content="Fetching Posts" />
         </Dimmer>
         {data && data.getPosts.length > 0 ? (
-          data.getPosts.map((post: any) => <Posts key={post.id} post={post} />)
+          data.getPosts.map((post: any) => <Posts key={post.id} {...post} />)
         ) : (
           <h4 className="noData">No posts available.</h4>
         )}
