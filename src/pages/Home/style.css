@@ -8,6 +8,11 @@
   align-items: center;
 }
 
+.ui.header.mainHeader {
+  font-size: 2rem;
+  text-align: center;
+}
+
 .postsContainer {
   height: 100%;
   max-width: 80%;
@@ -33,7 +38,7 @@
 /* Large devices like PC */
 @media (min-width: 992px) {
   .postsContainer {
-    max-width: 40%;
+    max-width: 30%;
     margin: auto;
   }
 }

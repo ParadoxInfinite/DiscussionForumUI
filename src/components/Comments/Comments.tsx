@@ -2,7 +2,13 @@ import React from "react";
 import { Comment } from "semantic-ui-react";
 import moment from "moment";
 
-const Comments = (comment: any) => {
+export interface CommentStructure {
+  id: string;
+  username: string;
+  body: string;
+  createdAt: string;
+}
+const Comments = (comment: CommentStructure) => {
   return (
     <Comment key={comment.id}>
       <Comment.Content>

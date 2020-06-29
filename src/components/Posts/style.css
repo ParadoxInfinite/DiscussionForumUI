@@ -2,8 +2,14 @@
   padding: 0 10px !important;
 }
 
-.report {
+i.icon.report {
+  font-size: 20px;
   float: right;
+}
+
+i.like.icon,
+i.comments.icon {
+  font-size: large;
 }
 
 i.icon {

@@ -3,13 +3,20 @@ import { Card, Button, Header, Comment, Icon } from "semantic-ui-react";
 import moment from "moment";
 
 import "./style.css";
-import Comments from "../Comments/Comments";
+import Comments, { CommentStructure } from "../Comments/Comments";
 
 const Posts = (post: any, key: any) => {
+  const likePost = () => {
+    console.log("Post liked");
+  };
+  const commentOnPost = () => {
+    console.log("Post Commented");
+  };
   return (
     <Card key={key} fluid>
       <Card.Content>
-        <Icon className="flag report" />
+        {/* Commenting out the report button for now, no functionality implemented for it yet. */}
+        {/* <Icon className="flag report" /> */}
         <Card.Header>{post.title}</Card.Header>
         <Card.Meta>
           <Icon className="user" />
@@ -24,12 +31,13 @@ const Posts = (post: any, key: any) => {
       <Card.Content extra>
         <div className="ui two buttons">
           <Button
-            icon="heart"
+            icon="like"
             label={{
               basic: true,
-              pointing: "left",
               content: post.likeCount,
             }}
+            basic
+            onClick={likePost}
           />
           <Button
             icon="comments"
@@ -37,6 +45,8 @@ const Posts = (post: any, key: any) => {
               basic: true,
               content: post.commentCount,
             }}
+            basic
+            onClick={commentOnPost}
           />
         </div>
       </Card.Content>
@@ -47,8 +57,8 @@ const Posts = (post: any, key: any) => {
               <Header as="h3" dividing>
                 Comments
               </Header>
-              {post.comments.map((comment: any) => (
-                <Comments {...comment} />
+              {post.comments.map((comment: CommentStructure) => (
+                <Comments {...comment} key={comment.id} />
               ))}
             </Comment.Group>
           ) : (
@@ -56,7 +66,7 @@ const Posts = (post: any, key: any) => {
               <Header as="h3" dividing>
                 Comments
               </Header>
-              {post.comments.splice(0, 2).map((comment: any) => (
+              {post.comments.splice(0, 2).map((comment: CommentStructure) => (
                 <Comments {...comment} />
               ))}
               <a href="/home">View {post.commentCount - 2} more comments.</a>

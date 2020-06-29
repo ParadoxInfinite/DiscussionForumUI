@@ -56,3 +56,8 @@ export const FETCH_POSTS = gql`
     }
   }
 `;
+export const LIKE_POST = gql`
+  mutation likePost($postId: ID!) {
+    likePost(postId: $postId)
+  }
+`;
