@@ -3,7 +3,13 @@
 }
 
 i.icon.report {
-  font-size: 20px;
+  color: black;
+  font-size: 18px;
+  float: right;
+}
+i.icon.trash {
+  color: red;
+  font-size: 18px;
   float: right;
 }
 
@@ -14,4 +20,9 @@ i.comments.icon {
 
 i.icon {
   font-size: 0.9em;
+}
+
+.ui.button:focus {
+  background-color: #e0e1e2 none;
+  color: rgba(0, 0, 0, 0.6);
 }

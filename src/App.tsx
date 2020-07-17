@@ -11,6 +11,7 @@ import history from "./utils/history";
 
 import { AuthProvider } from "./context/auth";
 import { AuthRoute } from "./utils/AuthRoute";
+import CreatePost from "./pages/CreatePost/CreatePost";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <AuthRoute exact path="/" component={Index} />
           <Route exact path="/home" component={Home} />
+          <Route exact path="/createPost" component={CreatePost} />
           <Route component={NotFound} />
         </Switch>
       </Router>

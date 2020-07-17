@@ -1,6 +1,14 @@
 import React, { useReducer, createContext } from "react";
 import jwtDecode from "jwt-decode";
 
+export interface User {
+  email: string;
+  exp: number;
+  iat: number;
+  username: string;
+  id: string;
+}
+
 interface TokenInterface {
   foo: string;
   exp: number;

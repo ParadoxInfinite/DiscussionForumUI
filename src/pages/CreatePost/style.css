@@ -1,0 +1,37 @@
+.createPage {
+  display: block;
+}
+
+.createPostContainer {
+  height: 100%;
+  max-width: 80%;
+  margin: auto;
+}
+.ui.header.mainHeader {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* Small devices like phones */
+@media (min-width: 576px) {
+  .createPostContainer {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+/* Medium devices like tablets */
+@media (min-width: 768px) {
+  .createPostContainer {
+    max-width: 80%;
+    margin: auto;
+  }
+}
+
+/* Large devices like PC */
+@media (min-width: 992px) {
+  .createPostContainer {
+    max-width: 40%;
+    margin: auto;
+  }
+}

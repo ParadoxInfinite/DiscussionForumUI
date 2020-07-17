@@ -7,24 +7,25 @@ import { Link } from "react-router-dom";
 
 const MenuBar = () => {
   const { user, logout } = useContext(AuthContext);
-  let username: any;
+
+  const [activeItem, setActiveItem] = useState<string>(
+    window.location.pathname.substring(1)
+  );
+  let username: any = "";
   if (user !== null) {
     username = user;
     username = username.username;
   } else {
     history.push("/");
   }
-  const [activeItem, setActiveItem] = useState<string>(
-    window.location.pathname.substring(1)
-  );
-
   const handleItemClick = (_e: any, { name }: MenuItemProps) => {
+    history.push(`${name}`);
     setActiveItem(name!.toString());
   };
 
   return (
     <Menu pointing secondary stackable size="huge">
-      <Menu.Menu>
+      <Menu.Menu position="left">
         <Menu.Item
           name="home"
           onClick={handleItemClick}
@@ -42,7 +43,12 @@ const MenuBar = () => {
         />
       </Menu.Menu>
       <Menu.Menu position="right">
-        <Menu.Item name={username} as={Link} to={"/home"} active />
+        <Menu.Item
+          name={username}
+          as={Link}
+          to={"/home"}
+          style={{ fontWeight: "bold" }}
+        />
         <Menu.Item name="logout" onClick={logout} />
       </Menu.Menu>
     </Menu>

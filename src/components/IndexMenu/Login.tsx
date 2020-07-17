@@ -39,6 +39,7 @@ const Login = () => {
           placeholder="Username"
           value={values.username}
           onChange={onChange}
+          required
           error={errors.username ? true : false}
           type="text"
         />
@@ -49,10 +50,11 @@ const Login = () => {
           placeholder="Password"
           value={values.password}
           onChange={onChange}
+          required
           error={errors.password ? true : false}
           type="password"
         />
-        <Button content="Sign In" onClick={onSubmit} primary fluid />
+        <Button content="Sign In" primary fluid />
       </Form>
       {Object.keys(errors).length > 0 && (
         <div className="ui error message">
