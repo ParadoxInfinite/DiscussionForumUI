@@ -7,9 +7,10 @@ const LikeButton = ({ user, post: { id, likeCount, likes } }: any) => {
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    if (likes.find((like: any) => like.username === user.username))
-      setLiked(true);
-    else setLiked(false);
+    if (user !== null)
+      if (likes.find((like: any) => like.username === user.username))
+        setLiked(true);
+      else setLiked(false);
   }, [user, likes]);
 
   const [likePost] = useMutation(LIKE_POST, {
