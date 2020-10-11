@@ -4,6 +4,7 @@ import { Menu, MenuItemProps } from "semantic-ui-react";
 import history from "../../utils/history";
 import { AuthContext } from "../../context/auth";
 import { Link } from "react-router-dom";
+import "./styles.css";
 
 const MenuBar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -27,6 +28,8 @@ const MenuBar = () => {
     <Menu pointing secondary stackable size="huge">
       <Menu.Menu position="left">
         <Menu.Item
+          as={Link}
+          to={"/home"}
           name="home"
           onClick={handleItemClick}
           active={activeItem === "home"}

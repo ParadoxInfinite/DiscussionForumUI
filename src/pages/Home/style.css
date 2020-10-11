@@ -38,7 +38,7 @@
 /* Large devices like PC */
 @media (min-width: 992px) {
   .postsContainer {
-    max-width: 30%;
+    max-width: 40%;
     margin: auto;
   }
 }

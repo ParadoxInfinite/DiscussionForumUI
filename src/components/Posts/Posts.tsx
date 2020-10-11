@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { Card, Button, Header, Comment, Icon } from "semantic-ui-react";
+import { Card, Button, Header, Comment, Icon, Image } from "semantic-ui-react";
 import moment from "moment";
 
 import "./style.css";
 import Comments, { CommentStructure } from "../Comments/Comments";
 import { AuthContext, User } from "../../context/auth";
 import LikeButton from "./LikeButton";
+import { Link } from "react-router-dom";
 
 export interface Post {
   id: string;
@@ -25,18 +26,23 @@ const Posts = (post: Post, key: any) => {
     const tempUser: User = user!;
     username = tempUser.username;
   }
-  const commentOnPost = () => {
-    console.log("Post Commented");
-  };
+
   return (
     <Card key={key} fluid>
       <Card.Content>
+        <Image
+          floated="left"
+          size="mini"
+          src="https://react.semantic-ui.com/images/avatar/large/elliot.jpg"
+        />
         {/* Commenting out the report button for now, no functionality implemented for it yet. */}
         {/* <Icon className="flag report" /> */}
         {user !== null && username === post.username ? (
           <Icon className="trash alternate outline report" />
         ) : null}
-        <Card.Header>{post.title}</Card.Header>
+        <Card.Header as={Link} to={`/post/${post.id}`}>
+          {post.title}
+        </Card.Header>
         <Card.Meta>
           <Icon className="user" />
           {post.username}
@@ -54,13 +60,14 @@ const Posts = (post: Post, key: any) => {
             post={{ id: post.id, likeCount: post.likeCount, likes: post.likes }}
           />
           <Button
+            as={Link}
+            to={`/post/${post.id}`}
             icon="comments"
             label={{
               basic: true,
               content: post.commentCount,
             }}
             basic
-            onClick={commentOnPost}
           />
         </div>
       </Card.Content>
@@ -68,7 +75,7 @@ const Posts = (post: Post, key: any) => {
         {post.commentCount > 0 ? (
           post.commentCount < 3 ? (
             <Comment.Group>
-              <Header as="h3" dividing>
+              <Header as="h4" dividing>
                 Comments
               </Header>
               {post.comments.map((comment: CommentStructure) => (
@@ -77,13 +84,15 @@ const Posts = (post: Post, key: any) => {
             </Comment.Group>
           ) : (
             <Comment.Group>
-              <Header as="h3" dividing>
+              <Header as="h4" dividing>
                 Comments
               </Header>
-              {post.comments.splice(0, 2).map((comment: CommentStructure) => (
+              {post.comments.slice(0, 2).map((comment: CommentStructure) => (
                 <Comments {...comment} key={comment.id} />
               ))}
-              <a href="/home">View {post.commentCount - 2} more comments.</a>
+              <a href={`/post/${post.id}`}>
+                View {post.commentCount - 2} more comments.
+              </a>
             </Comment.Group>
           )
         ) : (
