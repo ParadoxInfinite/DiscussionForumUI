@@ -11,6 +11,7 @@ export interface CommentStructure {
 const Comments = (comment: CommentStructure) => {
   return (
     <Comment key={comment.id}>
+      <Comment.Avatar src="https://react.semantic-ui.com/images/avatar/small/elliot.jpg" />
       <Comment.Content>
         <Comment.Author as="a">{comment.username}</Comment.Author>
         <Comment.Metadata>

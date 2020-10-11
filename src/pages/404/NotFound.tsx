@@ -17,8 +17,7 @@ const NotFound = () => {
         <span className="four-oh-four">404</span>
         <br />
         <br />
-        Couldn't find what you were looking for. Would you like to go back
-        &nbsp;
+        Couldn't find what you were looking for. Would you like to go back{" "}
         <a href="/home">home</a>?
       </h3>
     </div>
