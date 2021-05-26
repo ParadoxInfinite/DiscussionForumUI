@@ -1,7 +1,11 @@
 import React from "react";
 import App from "./App";
-import { ApolloClient, InMemoryCache, HttpLink } from "@apollo/client";
-import { ApolloProvider } from "@apollo/react-hooks";
+import {
+  ApolloClient,
+  InMemoryCache,
+  HttpLink,
+  ApolloProvider,
+} from "@apollo/client";
 import { setContext } from "@apollo/link-context";
 
 const httpLink = new HttpLink({
@@ -22,8 +26,4 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export default (
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>
-);
+export default <ApolloProvider children={<App />} client={client} />;
